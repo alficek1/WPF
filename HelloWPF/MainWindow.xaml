@@ -5,8 +5,8 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:HelloWPF"
         mc:Ignorable="d"
-        Title="Pozdrav" Height="450" Width="800">
-    <Grid HorizontalAlignment="Center" VerticalAlignment="Center">
-        <TextBlock HorizontalAlignment="Center" Height="18" TextWrapping="Wrap" Text="Pozdrav z formulare" VerticalAlignment="Center" Width="157"/>
+        Title="Pozdrav" Height="450" Width="866">
+    <Grid>
+        <Button Content="Tlačítko" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" />
     </Grid>
 </Window>
