@@ -6,29 +6,36 @@
         xmlns:local="clr-namespace:KalkulackaWPF"
         mc:Ignorable="d"
         Title="MainWindow" Height="157" Width="449"
-        WindowStartupLocation="CenterScreen"  Icon="/kalkulacka.png">
+        WindowStartupLocation="CenterScreen" Icon="/kalkulacka.png">
     <Grid Margin="10">
         <Grid.RowDefinitions>
-            <RowDefinition Height="*"/>
-            <RowDefinition Height="30"/>
+            <RowDefinition Height="*" />
+            <RowDefinition Height="30" />
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="*"/>
-            <ColumnDefinition Width="50"/>
-            <ColumnDefinition Width="*"/>
-            <ColumnDefinition Width="50"/>
-            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="50" />
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="50" />
+            <ColumnDefinition Width="*" />
         </Grid.ColumnDefinitions>
-        <Button Content="Vypočítej" Width="80" VerticalAlignment="Center" Grid.Row="1" Grid.Column="2"/>
-        <TextBox VerticalAlignment="Center" Grid.Row="0" Grid.Column="0" Margin="0,0,10,0" Text="0"/>
-        <TextBox VerticalAlignment="Center" Grid.Row="0" Grid.Column="2" Margin="0,0,10,0" Text="0"/>
-        <ComboBox VerticalAlignment="Center" Grid.Row="0" Grid.Column="1"  Margin="0,0,10,0" SelectedIndex="0">
-            <ComboBoxItem Content="+"/>
-            <ComboBoxItem Content="-"/>
-            <ComboBoxItem Content="*"/>
-            <ComboBoxItem Content="/"/>
+
+        <Button Width="80" VerticalAlignment="Center" Grid.Row="1" Grid.Column="2" Name="vypocitejButton" Click="vypocitejButton_Click">Vypočítej</Button>
+
+        <TextBox VerticalAlignment="Center" Grid.Row="0" Grid.Column="0" Margin="0,0,10,0" Name="cislo1TextBox"></TextBox>
+
+        <TextBox VerticalAlignment="Center" Grid.Row="0" Grid.Column="2" Margin="0,0,10,0" Name="cislo2TextBox">0</TextBox>
+
+        <ComboBox VerticalAlignment="Center" Grid.Row="0" Grid.Column="1" Margin="0,0,10,0" SelectedIndex="0" Name="operaceComboBox">
+        <ComboBoxItem>+</ComboBoxItem>
+            <ComboBoxItem>-</ComboBoxItem>
+            <ComboBoxItem>*</ComboBoxItem>
+            <ComboBoxItem>/</ComboBoxItem>
         </ComboBox>
+
         <TextBlock Grid.Row="0" Grid.Column="3" VerticalAlignment="Center" HorizontalAlignment="Center" Text="=" />
-        <TextBlock Grid.Row="0" Grid.Column="4" VerticalAlignment="Center" HorizontalAlignment="Center" Text="0" />
+
+        <TextBlock Grid.Row="0" Grid.Column="4" VerticalAlignment="Center" HorizontalAlignment="Center" Text="0" Name="vysledekTextBlock"/>
+
     </Grid>
 </Window>

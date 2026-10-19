@@ -20,5 +20,30 @@ namespace KalkulackaWPF
         {
             InitializeComponent();
         }
+
+        private void vypocitejButton_Click(object sender, RoutedEventArgs e)
+        {
+            // příprava proměnných
+            string operace = operaceComboBox.Text;
+            double cislo1 = double.Parse(cislo1TextBox.Text);
+            double cislo2 = double.Parse(cislo2TextBox.Text);
+            double vysledek = 0;
+
+            // výpočet
+            if (operace == "+")
+                vysledek = cislo1 + cislo2;
+            else if (operace == "-")
+                vysledek = cislo1 - cislo2;
+            else if (operace == "*")
+                vysledek = cislo1 * cislo2;
+            else if (operace == "/")
+            {
+                if (cislo2 != 0)
+                    vysledek = cislo1 / cislo2;
+                else
+                    MessageBox.Show("Nulou nelze dělit");
+            }
+            vysledekTextBlock.Text = vysledek.ToString();
+        }
     }
 }
