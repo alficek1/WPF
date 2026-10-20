@@ -9,27 +9,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-/*  _____ _______         _                      _
-     * |_   _|__   __|       | |                    | |
-     *   | |    | |_ __   ___| |___      _____  _ __| | __  ___ ____
-     *   | |    | | '_ \ / _ \ __\ \ /\ / / _ \| '__| |/ / / __|_  /
-     *  _| |_   | | | | |  __/ |_ \ V  V / (_) | |  |   < | (__ / /
-     * |_____|  |_|_| |_|\___|\__| \_/\_/ \___/|_|  |_|\_(_)___/___|
-     *                                _
-     *              ___ ___ ___ _____|_|_ _ _____
-     *             | . |  _| -_|     | | | |     |  LICENCE
-     *             |  _|_| |___|_|_|_|_|___|_|_|_|
-     *             |_|
-     *
-     * IT ZPRAVODAJSTVÍ  <>  PROGRAMOVÁNÍ  <>  HW A SW  <>  KOMUNITA
-     *
-     * Tento zdrojový kód je součástí výukových seriálů na
-     * IT sociální síti WWW.ITNETWORK.CZ
-     *
-     * Kód spadá pod licenci prémiového obsahu a vznikl díky podpoře
-     * našich členů. Je určen pouze pro osobní užití a nesmí být šířen.
-     * Více informací na http://www.itnetwork.cz/licence
-     */
+
 
 
 namespace HadejCislo
@@ -39,14 +19,23 @@ namespace HadejCislo
 	/// </summary>
 	public partial class MainWindow : Window
 	{
+		// Generátor náhodných čísel používaný pro výběr hledaného čísla.
 		readonly Random ramdom;
 
+		// Seznam všech hodnot, které už uživatel zadal.
 		List<int> hadaneHodnoty;
+		// Nejvyšší možné číslo v aktuální hře. Hodnota 0 znamená, že hra neběží.
 		int maxHodnota = 0;
+		// Počet pokusů v aktuální hře.
 		int pokus = 0;
+		// Číslo, které má uživatel uhodnout.
 		int hledanaHodnota;
+		// Poslední číslo zadané uživatelem.
 		int hadanaHodnota;
 
+		/// <summary>
+		/// Inicializuje okno a vytvoří generátor náhodných čísel.
+		/// </summary>
 		public MainWindow()
 		{
 			ramdom = new Random();
@@ -56,40 +45,48 @@ namespace HadejCislo
 
 		private void Zacit_Click(object sender, RoutedEventArgs e)
 		{
+			// Zahodíme tipy z předchozí hry a načteme horní hranici rozsahu.
 			hadaneHodnoty = [];
 			maxHodnota = int.Parse(maxHodnotaComboBox.Text);
+
+			// Připravíme uživatelské rozhraní pro novou hru.
 			tipTextBox.Text = "";
 			mensiVetsiTextBlock.Text = "Myslím si nové číslo";
+
+			// Vygenerujeme číslo včetně hodnot 0 a maxHodnota.
 			hledanaHodnota = ramdom.Next(0, maxHodnota + 1);
 			pokus = 0;
 		}
 
 		private void Tipnout_Click(object sender, RoutedEventArgs e)
 		{
-			//ověření zadání
+			// Pokud hra nebyla spuštěna nebo je pole prázdné, nic neděláme.
 			if (maxHodnota == 0 || tipTextBox.Text == "")
 				return;
 
-			//ověření tipnuté hodnoty
+			// Ověříme, že uživatel zadal celé číslo.
 			if (!int.TryParse(tipTextBox.Text, out hadanaHodnota))
 				return;
 
+			// Uložíme tip a zvýšíme počet pokusů.
 			hadaneHodnoty.Add(hadanaHodnota);
 
 			pokus++;
 
+			// Porovnáme tip s hledaným číslem a zobrazíme nápovědu.
 			if (hadanaHodnota > hledanaHodnota)
 				mensiVetsiTextBlock.Text = "Hledané číslo je menší";
 			else if (hadanaHodnota < hledanaHodnota)
 				mensiVetsiTextBlock.Text = "Hledané číslo je větší";
 			else
 			{
-				//hadanaHodnota==HledanaHodnota, Uživatel tipl správně
+				// Uživatel tipnul správné číslo, proto hru ukončíme.
 				mensiVetsiTextBlock.Text = "";
 
 				MessageBox.Show("UHODL JSI!" + "\n\nČíslo " + hledanaHodnota + " jsi uhodl na " + pokus + ". pokus"
 					+ "\n\nTvé tipy: " + string.Join(" ", hadaneHodnoty));
 
+				// Nulová horní hranice označuje ukončenou hru.
 				maxHodnota = 0;
 			}
 
