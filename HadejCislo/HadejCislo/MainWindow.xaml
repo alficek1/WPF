@@ -1,0 +1,69 @@
+﻿<Window x:Class="HadejCislo.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:HadejCislo"
+        mc:Ignorable="d"
+        Title="Hádej číslo" Height="240" MinHeight="240" Width="800" MinWidth="800"  WindowStartupLocation="CenterScreen">
+    
+    <Grid Margin="20">
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="110"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <Grid>
+
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="1.25*"/>
+                <RowDefinition Height="2*"/>
+                <RowDefinition Height="1.5*"/>
+            </Grid.RowDefinitions>
+
+            <TextBlock Grid.Row="0" Grid.Column="0" 
+                       VerticalAlignment="Bottom" Text="Rozsah:"/>
+
+            <TextBlock Grid.Row="1" Grid.Column="0" 
+                       Text="0 -" VerticalAlignment="Center"/>
+
+            <ComboBox Grid.Row="1" Grid.Column="0"
+                      Margin="20,0,20,0" Name="maxHodnotaComboBox"
+                      VerticalAlignment="Center" SelectedIndex="0">
+                <ComboBoxItem Content="10"/>
+                <ComboBoxItem Content="20"/>
+                <ComboBoxItem Content="30"/>
+                <ComboBoxItem Content="40"/>
+                <ComboBoxItem Content="50"/>
+            </ComboBox>
+
+            <Button x:Name="Zacit" Grid.Row="1" Grid.Column="2"
+                    Content="ZAČÍT" Height="24"
+                    VerticalAlignment="Center" Click="Zacit_Click"/>
+
+            <TextBlock Grid.Row="2" Grid.Column="0"
+                       VerticalAlignment="Bottom" Text="Tip:"/>
+
+            <TextBox Grid.Row="3" Grid.Column="0"
+                     Margin="0,2,20,0" Height="24"
+                     Name="tipTextBox" VerticalAlignment="Center"/>
+
+            <Button x:Name="Tipnout" Grid.Row="3" Grid.Column="1"
+                     Margin="0,2,0,0" Height="24"
+                     Content="TIPNOUT" VerticalAlignment="Center" Click="Tipnout_Click"/>
+
+        </Grid>
+
+        <TextBlock Grid.Row="1" Margin="0,20,0,0"
+                   VerticalAlignment="Top" HorizontalAlignment="Center"
+                   Name="mensiVetsiTextBlock"/>
+
+    </Grid>
+</Window>
