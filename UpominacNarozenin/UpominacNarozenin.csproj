@@ -1,20 +1,24 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
+    <!-- WPF aplikace se spouští jako Windows executable bez konzolového okna. -->
     <OutputType>WinExe</OutputType>
     <TargetFramework>net8.0-windows</TargetFramework>
 
+    <!-- Implicitní using direktivy a WPF podpora zjednodušují zdrojové soubory. -->
     <ImplicitUsings>enable</ImplicitUsings>
     <UseWPF>true</UseWPF>
   </PropertyGroup>
 
   <ItemGroup>
+    <!-- Ikony a obrázek se v projektu deklarují jako zdroje níže. -->
     <None Remove="dort.ico" />
     <None Remove="osoba_pridat.ico" />
     <None Remove="osoba_pridat.png" />
   </ItemGroup>
 
   <ItemGroup>
+    <!-- Grafické soubory jsou dostupné aplikaci jako WPF Resource. -->
     <Resource Include="dort.ico" />
     <Resource Include="osoba_pridat.ico" />
     <Resource Include="osoba_pridat.png" />

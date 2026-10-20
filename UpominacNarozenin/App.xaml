@@ -3,7 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:local="clr-namespace:UpominacNarozenin"
              StartupUri="MainWindow.xaml">
+    <!-- Globální zdroje aplikace lze doplnit například o styly a šablony. -->
     <Application.Resources>
-         
     </Application.Resources>
 </Application>

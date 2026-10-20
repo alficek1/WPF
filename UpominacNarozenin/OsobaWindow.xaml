@@ -18,8 +18,10 @@
             <ColumnDefinition />
         </Grid.ColumnDefinitions>
 
+        <!-- Ilustrační obrázek formuláře. -->
         <Image Source="/osoba_pridat.png" Stretch="None" Grid.ColumnSpan="2" Grid.Column="0" Grid.Row="0" />
 
+        <!-- Popisky používají podtržené písmeno jako klávesovou zkratku. -->
         <Label Content="_Jméno" Grid.Column="0" Grid.Row="1"
                Target="{Binding ElementName=jmenoTextBox}" />
         <Label Content="_Datum narození" Grid.Column="0" Grid.Row="2"
@@ -27,6 +29,7 @@
         <TextBox Grid.Column="1" Grid.Row="1" Name="jmenoTextBox" Margin="0,0,0,5" />
         <DatePicker Grid.Column="1" Grid.Row="2" Name="narozeninyDatePicker" Margin="0,0,0,5" />
 
+        <!-- Potvrzení uloží osobu a zavře dialog. -->
         <Button Name="okButton" Grid.Column="0" Grid.Row="3" Grid.ColumnSpan="2"
                 HorizontalAlignment="Center" Width="100" VerticalAlignment="Bottom"
                 Content="OK" IsDefault="True" Click="OkButton_Click" />

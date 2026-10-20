@@ -9,6 +9,8 @@ namespace UpominacNarozenin
 	/// </summary>
 	public partial class App : Application
 	{
+		// Třída je zatím bez vlastní inicializace; WPF spouští hlavní okno
+		// podle atributu StartupUri v souboru App.xaml.
 	}
 
 }

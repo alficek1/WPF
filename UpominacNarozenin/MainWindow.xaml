@@ -18,11 +18,13 @@
             <RowDefinition Height="30"/>
         </Grid.RowDefinitions>
 
+        <!-- Horní řádek zobrazuje dnešní datum. -->
         <StackPanel Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2"  Orientation="Horizontal">
             <TextBlock Text="Dnes je " />
             <TextBlock Text="{Binding DnesniDatum, StringFormat=dd.MM.yyyy}" />
         </StackPanel>
 
+        <!-- Upozornění na osobu s nejbližšími narozeninami. -->
         <StackPanel Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" Orientation="Horizontal">
             <TextBlock Text="Nejbližší narozeniny má " />
             <TextBlock Text="{Binding NejblizsiOsoba.Jmeno}" />
@@ -31,13 +33,16 @@
             <TextBlock Text=" dní." />
         </StackPanel>
 
+        <!-- Akce pro přidání a odebrání osoby. -->
         <StackPanel Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="2" Orientation="Horizontal" HorizontalAlignment="Center">
             <Button Width="100" Margin="0,0,10,0" Name="pridatButton" Content="Přidat" Click="PridatButton_Click" />
             <Button Width="100" Name="odebratButton" Content="Odebrat" Click="OdebratButton_Click" />
         </StackPanel>
 
+        <!-- Seznam je napojený na kolekci osob ve správci. -->
         <ListBox Grid.Column="0" Grid.Row="2" Name="osobyListBox" Margin="0,0,0,10" ItemsSource="{Binding Osoby}"/>
 
+        <!-- Detail aktuálně vybrané osoby. -->
         <StackPanel Grid.Column="1" Grid.Row="2" Margin="10,0,0,0" DataContext="{Binding ElementName=osobyListBox,Path=SelectedItem}">
             <StackPanel Orientation="Horizontal">
                 <TextBlock Text="Narozeniny: " />

@@ -64,6 +64,7 @@ namespace UpominacNarozenin
 		{
 			get
 			{
+				// Věk je nutné snížit, pokud letošní narozeniny ještě nenastaly.
 				DateTime dnes = DateTime.Today;
 				int vek = dnes.Year - Narozeniny.Year;
 				if (dnes < Narozeniny.AddYears(vek))
@@ -79,6 +80,7 @@ namespace UpominacNarozenin
 		{
 			get
 			{
+				// AddYears zachovává den a měsíc a posune datum do dalšího roku.
 				DateTime dalsiNarozeniny = Narozeniny.AddYears(Vek + 1);
 
 				TimeSpan rozdil = dalsiNarozeniny - DateTime.Today;

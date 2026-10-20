@@ -1,40 +1,19 @@
-﻿/*  _____ _______         _                      _
- * |_   _|__   __|       | |                    | |
- *   | |    | |_ __   ___| |___      _____  _ __| | __  ___ ____
- *   | |    | | '_ \ / _ \ __\ \ /\ / / _ \| '__| |/ / / __|_  /
- *  _| |_   | | | | |  __/ |_ \ V  V / (_) | |  |   < | (__ / /
- * |_____|  |_|_| |_|\___|\__| \_/\_/ \___/|_|  |_|\_(_)___/___|
- *
- *                      ___ ___ ___
- *                     | . |  _| . |  LICENCE
- *                     |  _|_| |___|
- *                     |_|
- *
- *    REKVALIFIKAČNÍ KURZY  <>  PROGRAMOVÁNÍ  <>  IT KARIÉRA
- *
- * Tento zdrojový kód je součástí profesionálních IT kurzů na
- * WWW.ITNETWORK.CZ
- *
- * Kód spadá pod licenci PRO obsahu a vznikl díky podpoře
- * našich členů. Je určen pouze pro osobní užití a nesmí být šířen.
- * Více informací na https://www.itnetwork.cz/licence
- */
+﻿
 using System.Windows;
 
 namespace UpominacNarozenin
 {
-	/// <summary>
-	/// hlavní formulář aplikace
-	/// </summary>
+
 	public partial class MainWindow : Window
 	{
 		/// <summary>
-		/// Správce osob
+		/// Správce osob používaný datovými vazbami hlavního okna.
 		/// </summary>
 		private readonly SpravceOsob spravceOsob = new();
 		
+
 		/// <summary>
-		/// Inicializuje formulář
+		/// Inicializuje okno, načte data a nastaví datový kontext.
 		/// </summary>
 		public MainWindow()
 		{
@@ -47,27 +26,28 @@ namespace UpominacNarozenin
 			{
 				MessageBox.Show(ex.Message, "Chyba", MessageBoxButton.OK, MessageBoxImage.Error);
 			}
+			// Vazby v XAML používají správce jako datový kontext okna.
 			DataContext = spravceOsob;
 		}
 
-		/// <summary>
-		/// Přidání osoby
-		/// </summary>
-		/// <param name="sender"></param>
-		/// <param name="e"></param>
+
+		/// <summary>Otevře dialog pro přidání osoby.</summary>
+		/// <param name="sender">Prvek, který událost vyvolal.</param>
+		/// <param name="e">Argumenty události kliknutí.</param>
 		private void PridatButton_Click(object sender, RoutedEventArgs e)
 		{
+			// Dialog předáme stejný správce, aby se změna ihned projevila v hlavním okně.
 			OsobaWindow osobaWindow = new(spravceOsob);
 			osobaWindow.ShowDialog();
 		}
 
-		/// <summary>
-		/// Odebrání osoby
-		/// </summary>
-		/// <param name="sender"></param>
-		/// <param name="e"></param>
+
+		/// <summary>Odebere právě vybranou osobu a uloží změny.</summary>
+		/// <param name="sender">Prvek, který událost vyvolal.</param>
+		/// <param name="e">Argumenty události kliknutí.</param>
 		private void OdebratButton_Click(object sender, RoutedEventArgs e)
 		{
+			// Bez vybrané položky není možné určit osobu, kterou má aplikace odebrat.
 			if (osobyListBox.SelectedItem != null)
 			{
 				try

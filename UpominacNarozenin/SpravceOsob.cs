@@ -29,6 +29,7 @@ namespace UpominacNarozenin
 {
 	public class SpravceOsob : INotifyPropertyChanged
 	{
+		// Událost umožňuje WPF aktualizovat text s nejbližšími narozeninami.
 		/// <summary>
 		/// Událost změny vlastnosti
 		/// </summary>
@@ -49,6 +50,7 @@ namespace UpominacNarozenin
 		/// </summary>
 		public SpravceOsob()
 		{
+			// Kolekce je inicializována hned, aby ji bylo možné bezpečně bindovat v XAML.
 			Osoby = [];
 		}
 
@@ -74,6 +76,7 @@ namespace UpominacNarozenin
 		/// <returns>Osoba s nejbližšími narozeninami</returns>
 		private void NajdiNejblizsi()
 		{
+			// Vlastnost ZbyvaDni už zohledňuje věk a datum letošních narozenin.
 			var serazeneOsoby = Osoby.OrderBy(o => o.ZbyvaDni);
 			if (serazeneOsoby.Any())
 				NejblizsiOsoba = serazeneOsoby.First();
@@ -91,6 +94,7 @@ namespace UpominacNarozenin
 		/// <exception cref="ArgumentException"></exception>
 		public void Pridej(string jmeno, DateTime? datumNarozeni)
 		{
+			// Kontroly držíme ve správci, aby platily pro všechny způsoby přidání osoby.
 			if (jmeno.Length < 3)
 				throw new ArgumentException("Jméno je příliž krátké");
 			if (datumNarozeni == null)
@@ -109,6 +113,7 @@ namespace UpominacNarozenin
 		/// <param name="osoba">Osoba k odebrání</param>
 		public void Odeber(Osoba osoba)
 		{
+			// ObservableCollection automaticky oznámí ListBoxu odstranění položky.
 			Osoby.Remove(osoba);
 			NajdiNejblizsi();
 		}
@@ -127,6 +132,7 @@ namespace UpominacNarozenin
 		/// </summary>
 		public void Uloz()
 		{
+			// XML soubor se ukládá do pracovního adresáře aplikace.
 			XmlSerializer serializer = new(Osoby.GetType());
 			using StreamWriter sw = new(cesta);
 			serializer.Serialize(sw, Osoby);
@@ -137,6 +143,7 @@ namespace UpominacNarozenin
 		/// </summary>
 		public void Nacti()
 		{
+			// Pokud soubor ještě neexistuje, začínáme s prázdnou kolekcí.
 			XmlSerializer serializer = new(Osoby.GetType());
 			if (File.Exists(cesta))
 			{
