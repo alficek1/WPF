@@ -1,0 +1,23 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net8.0-windows</TargetFramework>
+
+    <ImplicitUsings>enable</ImplicitUsings>
+    <UseWPF>true</UseWPF>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="dort.ico" />
+    <None Remove="osoba_pridat.ico" />
+    <None Remove="osoba_pridat.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="dort.ico" />
+    <Resource Include="osoba_pridat.ico" />
+    <Resource Include="osoba_pridat.png" />
+  </ItemGroup>
+
+</Project>
